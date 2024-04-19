@@ -34,8 +34,9 @@ export const Navbar = () => {
           <Button size="sm" variant="outline">
             <Link href="/sign-in">Login</Link>
           </Button>
+
           <Button>
-            <Link href="/sign-up">Get Taskify for free</Link>
+            <Link href="/sign-in">Get Taskify for free</Link>
           </Button>
         </div>
       </div>
