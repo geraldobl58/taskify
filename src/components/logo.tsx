@@ -5,7 +5,8 @@ export const Logo = () => {
   return (
     <Link href="/">
       <div className="hover:opacity-75 transition items-center gap-x-2 hidden md:flex">
-        <Image alt="Logo" height={100} width={100} src="/logo.svg" />
+        <Image alt="Logo" height={30} width={30} src="/logo.svg" />
+        <h3 className="font-bold">Taskify</h3>
       </div>
     </Link>
   );
