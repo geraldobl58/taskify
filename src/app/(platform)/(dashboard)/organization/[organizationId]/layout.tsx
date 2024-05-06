@@ -7,7 +7,7 @@ interface OrganizationIdLayoutProps {
 const OrganizationIdLayout = ({ children }: OrganizationIdLayoutProps) => {
   return (
     <>
-      <OrgControl />
+      {/* <OrgControl /> */}
       {children}
     </>
   );
