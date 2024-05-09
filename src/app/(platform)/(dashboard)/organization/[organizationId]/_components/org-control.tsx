@@ -22,7 +22,7 @@ export const OrgControl = () => {
 
   return (
     <div>
-      <div>OrgControl</div>
+      <div></div>
     </div>
   );
 };
