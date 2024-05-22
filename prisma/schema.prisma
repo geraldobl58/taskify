@@ -70,7 +70,7 @@ enum ENTITY_TYPE {
 model AuditLog {
   id          String      @id @default(uuid())
   orgId       String
-  actrion     ACTION
+  action      ACTION
   entityId    String
   entityType  ENTITY_TYPE
   entityTitle String
