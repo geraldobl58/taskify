@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "stripe:webhook": "stripe listen --forward-to localhost:3000/api/webhook",
+    "postinstall": "prisma generate"
   },
   "dependencies": {
     "@clerk/nextjs": "^4.29.12",
@@ -30,6 +32,7 @@
     "react": "^18",
     "react-dom": "^18",
     "sonner": "^1.4.41",
+    "stripe": "^14.5.0",
     "tailwind-merge": "^2.2.2",
     "tailwindcss-animate": "^1.0.7",
     "unsplash-js": "^7.0.19",

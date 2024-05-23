@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { redirect } from "next/navigation";
 
 import { auth } from "@clerk/nextjs";
@@ -6,9 +7,14 @@ import { HelpCircle, User2 } from "lucide-react";
 
 import { Hint } from "@/components/hint";
 import { FormPopover } from "@/components/form/form-popover";
-import { db } from "@/lib/db";
-import Link from "next/link";
 import { Skeleton } from "@/components/ui/skeleton";
+
+import { getAvailableCount } from "@/lib/org-limit";
+
+import { MAX_FREE_BOARDS } from "@/constants/board";
+import { checkSubscription } from "@/lib/subscription";
+
+import { db } from "@/lib/db";
 
 export const BoardList = async () => {
   const { orgId } = auth();
@@ -25,6 +31,9 @@ export const BoardList = async () => {
       createdAt: "desc",
     },
   });
+
+  const availableCount = await getAvailableCount();
+  const isPro = await checkSubscription();
 
   return (
     <div className="space-y-4">
@@ -77,11 +86,15 @@ export const BoardList = async () => {
           "
           >
             <p className="text-sm">Create new board</p>
-            <span className="text-xs">5 remaining</span>
+            <span className="text-xs">
+              {isPro
+                ? "Unlimited"
+                : `${MAX_FREE_BOARDS - availableCount} remaining`}
+            </span>
             <Hint
               sideOffset={40}
               description={`
-              Free Workspaces can have up to 5 open boards. For unlimited boards upgrade this workspaces.
+              Free Workspaces can have up to 1 open boards. For unlimited boards upgrade this workspaces.
             `}
             >
               <HelpCircle className="absolute bottom-2 right-2 h-[14px] w-[14px]" />
